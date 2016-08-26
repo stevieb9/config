@@ -63,10 +63,10 @@ endfunction
 
 function PerlBuild()
     w
-    ! sudo rmeagle
-    ! make realclean
+    ! make distclean
     ! perl Makefile.PL
-    ! sudo make install
+    ! make
+    ! make install
 endfunction
 
 
@@ -74,17 +74,30 @@ endfunction
 
 function MakeInstall()
     w
-    ! sudo make install
+    ! make install
 endfunction
 
 
-" commit to the repo
+" commit to git repo
 
-function SvnCommit()
+function GitCommit()
     w
-    ! svn commit
+    ! git commit -a
 endfunction
 
+" push to git repo
+
+function GitPush()
+    w
+    ! git push
+endfunction
+
+" commit and push to git repo
+
+function GitCommitAndPush()
+    w
+    ! git commit -a && git push
+endfunction
 
 " commit to hg repo
 
@@ -100,7 +113,6 @@ function HgPush()
     w
     ! hg push
 endfunction
-
 
 " push and commit to hg repo
 
@@ -189,7 +201,7 @@ endif
 au FileType * setlocal comments=
 
 " -------------------
-" Hitachi-ID specific
+" $work specific
 " -------------------
 
 " source ticket .vimrc
@@ -219,3 +231,7 @@ map ,ci :call SvnCommit()<CR>
 map ,hgc :call HgCommit()<CR>
 map ,hgp :call HgPush()<CR>
 map ,hci :call HgCommitAndPush()<CR>
+map ,gc :call GitCommit()<CR>
+map ,gp :call GitPush()<CR>
+map ,gi :call GitCommitAndPush()<CR>
+
