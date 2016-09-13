@@ -1,3 +1,5 @@
+iab _perl use strict;<CR>use warnings;<CR>
+
 " Set tabs
 set expandtab
 set tabstop=4
@@ -63,10 +65,10 @@ endfunction
 
 function PerlBuild()
     w
-    ! make distclean
+    ! sudo rmeagle
+    ! make realclean
     ! perl Makefile.PL
-    ! make
-    ! make install
+    ! sudo make install
 endfunction
 
 
@@ -74,30 +76,17 @@ endfunction
 
 function MakeInstall()
     w
-    ! make install
+    ! sudo make install
 endfunction
 
 
-" commit to git repo
+" commit to the repo
 
-function GitCommit()
+function SvnCommit()
     w
-    ! git commit -a
+    ! svn commit
 endfunction
-
-" push to git repo
-
-function GitPush()
-    w
-    ! git push
-endfunction
-
-" commit and push to git repo
-
-function GitCommitAndPush()
-    w
-    ! git commit -a && git push
-endfunction
+   
 
 " commit to hg repo
 
@@ -114,6 +103,7 @@ function HgPush()
     ! hg push
 endfunction
 
+
 " push and commit to hg repo
 
 function HgCommitAndPush()
@@ -125,7 +115,7 @@ endfunction
 if has("vms")
   set nobackup        " do not keep a backup file, use versions instead
 else
-  set backup          " keep a backup file
+  set backup   	      " keep a backup file
 endif
 set history=50        " keep 50 lines of command line history
 set ruler        " show the cursor position all the time
@@ -198,15 +188,15 @@ endif
 
 " need to specify comments, as they were pissed on by sourcing other files
 
-au FileType * setlocal comments=
+au FileType * setlocal comments= 
 
 " -------------------
-" $work specific
+" Hitachi-ID specific
 " -------------------
 
 " source ticket .vimrc
 
-if filereadable(glob("~/.vimrc_ticket"))
+if filereadable(glob("~/.vimrc_ticket")) 
     source ~/.vimrc_ticket
 endif
 
@@ -231,7 +221,4 @@ map ,ci :call SvnCommit()<CR>
 map ,hgc :call HgCommit()<CR>
 map ,hgp :call HgPush()<CR>
 map ,hci :call HgCommitAndPush()<CR>
-map ,gc :call GitCommit()<CR>
-map ,gp :call GitPush()<CR>
-map ,gi :call GitCommitAndPush()<CR>
 
