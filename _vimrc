@@ -61,57 +61,6 @@ function RemoveVimBackup()
 endfunction
 
 
-" do a uninst/reinst of Perl module
-
-function PerlBuild()
-    w
-    ! sudo rmeagle
-    ! make realclean
-    ! perl Makefile.PL
-    ! sudo make install
-endfunction
-
-
-" do just an install of Perl module
-
-function MakeInstall()
-    w
-    ! sudo make install
-endfunction
-
-
-" commit to the repo
-
-function SvnCommit()
-    w
-    ! svn commit
-endfunction
-   
-
-" commit to hg repo
-
-function HgCommit()
-    w
-    ! hg commit
-endfunction
-
-
-" push to hg repo
-
-function HgPush()
-    w
-    ! hg push
-endfunction
-
-
-" push and commit to hg repo
-
-function HgCommitAndPush()
-    w
-    ! hg commit && hg push
-endfunction
-
-
 if has("vms")
   set nobackup        " do not keep a backup file, use versions instead
 else
@@ -190,16 +139,6 @@ endif
 
 au FileType * setlocal comments= 
 
-" -------------------
-" Hitachi-ID specific
-" -------------------
-
-" source ticket .vimrc
-
-if filereadable(glob("~/.vimrc_ticket")) 
-    source ~/.vimrc_ticket
-endif
-
 "
 " custom key mappings
 "
@@ -215,10 +154,3 @@ map ,run :!./%
 " maps custom functions
 
 map ,rvb :call RemoveVimBackup()<CR>
-map ,rmi :call PerlBuild()<CR>
-map ,mi :call MakeInstall()<CR>
-map ,ci :call SvnCommit()<CR>
-map ,hgc :call HgCommit()<CR>
-map ,hgp :call HgPush()<CR>
-map ,hci :call HgCommitAndPush()<CR>
-
