@@ -1,0 +1,12 @@
+ [Unit]
+Description=Start x11vnc at startup.
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -auth guess -noxdamage -repeat -rfbauth /etc/x11vnc/vncpwd -rfbport 5900 -shared -o /var/log/vncserver.log -norecord
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
