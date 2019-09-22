@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo sshfs -o IdentityFile=/home/spek/.ssh/id_rsa -o allow_other pi@pi-dev:/home/pi/repos /mnt/pi-dev

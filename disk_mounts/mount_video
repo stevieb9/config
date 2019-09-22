@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo sshfs -oIdentityFile=/home/spek/.ssh/id_rsa -oallow_other spek@cesium:/media/video  /mnt/video

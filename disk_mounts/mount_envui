@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo sshfs -o allow_other pi@192.168.219.7:/home/pi/repos/app-rpi-envui /mnt/envui
+sudo sshfs -o allow_other pi@192.168.219.7:/home/pi/envui /mnt/app
