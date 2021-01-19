@@ -1,0 +1,2 @@
+Target: C:\Windows\System32\cmd.exe /k "C:\Program Files\Mono\bin\setmonopath.bat" & cd C:\repos\berrybrew
+Start In: "C:\Program Files\Mono\"
