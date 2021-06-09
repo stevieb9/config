@@ -119,6 +119,8 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
 
+  autocmd BufWritePre * :%s/\s\+$//e
+
   augroup END
 
 else
@@ -137,7 +139,7 @@ endif
 
 " need to specify comments, as they were pissed on by sourcing other files
 
-au FileType * setlocal comments= 
+au FileType * setlocal comments=
 
 "
 " custom key mappings
@@ -154,3 +156,4 @@ map ,run :!./%
 " maps custom functions
 
 map ,rvb :call RemoveVimBackup()<CR>
+
